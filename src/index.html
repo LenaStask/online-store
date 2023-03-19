@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online store</title>
+</head>
+<body>
+  <nav class="navbar fixed-top navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"><h3>FASHION STORE</h3></a>
+    
+      <div class="position-relative">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" id="cartCounter">20<span class="visually-hidden">unread messages</span></span>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div id="filters" class="container">
+      <div class="row">
+        <div class="col">
+          <p>Filters</p>
+          <div class="filter-group">
+            <span class="p-2">Color:</span>
+            <div class="btn-group btn-group-sm">
+              <input type="checkbox" id="filterColor1" name="color[]" value="white" class="btn-check" autocomplete="off">
+              <label for="filterColor1" class="btn btn-outline-dark">White</label>
+            
+              <input type="checkbox" id="filterColor2" name="color[]" value="black" class="btn-check" autocomplete="off">
+              <label for="filterColor2" class="btn btn-outline-dark">Black</label>
+            
+              <input type="checkbox" id="filterColor3" name="color[]" value="pink" class="btn-check"  autocomplete="off">
+              <label for="filterColor3" class="btn btn-outline-dark">Pink</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="p-2">Size:</span>
+            <div class="btn-group btn-group-sm">
+              <input type="checkbox" id="filterSize1" name="size[]" value="small" class="btn-check" autocomplete="off">
+              <label for="filterSize1" class="btn btn-outline-dark">Small</label>
+            
+              <input type="checkbox" id="filterSize2" name="size[]" value="medium" class="btn-check" autocomplete="off">
+              <label for="filterSize2" class="btn btn-outline-dark">Medium</label>
+            
+              <input type="checkbox" id="filterSize3" name="size[]" value="large" class="btn-check" autocomplete="off">
+              <label for="filterSize3" class="btn btn-outline-dark">Large</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="p-2">Season:</span>
+            <div class="btn-group btn-group-sm">
+              <input type="checkbox" id="filterSeason1" name="season[]" value="summer" class="btn-check" autocomplete="off">
+              <label for="filterSeason1" class="btn btn-outline-dark">Summer</label>
+            
+              <input type="checkbox" id="filterSeason2" name="season[]" value="winter" class="btn-check" autocomplete="off">
+              <label for="filterSeason2" class="btn btn-outline-dark">Winter</label>
+            </div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="newArrival" name="newArrival" value="1" class="form-check-input">
+            <label class="form-check-label" for="newArrival">
+              New arrival
+            </label>
+          </div>
+        </div>
+        <div class="col filter-slider">
+          <div class="slider">
+            <p>Price</p>
+            <div id="priceSlider" class="slider-styled"></div>
+            <div id="priceSliderValue"></div>
+          </div>
+          <div class="slider">
+            <p>Stock</p>
+            <div id="stockSlider" class="slider-styled"></div>
+            <div id="stockSliderValue"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="searchInput" class="form-label">Search</label>
+            <div class="input-group rounded search-style">
+              <input type="search" id="searchInput" name="searchInput" class="form-control rounded" placeholder="Name..." autocomplete="off" value="">
+              <button type="button" id="searchBtn" class="btn btn-outline-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="sortBy" class="form-label">Sort by</label>
+            <select id="sortBy" class="form-select">
+              <option value="name_asc">Name: A to Z</option>
+              <option value="name_desc">Name: Z to A</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+            </select>
+          </div>
+          <div class="d-grid gap-2 d-md-block">
+            <button type="button" id="resetFiltersBtn" class="btn btn-secondary">Reset filters</button>
+            <button type="button" id="resetSettingsBtn" class="btn btn-secondary">Reset settings</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="cards"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="github">
+        <span><a href="https://github.com/LenaStask">github</a></span>
+    </p>
+    <p class="copyright">
+        Copyright
+        <span>2022</span>
+    </p>
+    <p class="rslink">
+        <a href="https://rs.school/"><img class="img-rs" src="./assets/svg/rsschool.svg" alt="rs school"></a>
+    </p>
+  </footer>
+
+  <template id="cardTemplate">
+    <div class="card">
+      <img src="" class="card-img-top item__image" alt="">
+      <div class="card-body">
+        <h5 class="card-title item__name"></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item item__size">Size: <span></span></li>
+          <li class="list-group-item item__color">Color: <span></span></li>
+          <li class="list-group-item item__season">Season: <span></span></li>
+          <li class="list-group-item item__stock">Stock: <span></span></li>
+          <li class="list-group-item item__price"><span></span> &euro;</li>
+        </ul>
+        <a href="#" class="btn btn-primary card__btn">Add to cart</a>
+      </div>
+    </div>
+  </template>
+</body>
+</html>
